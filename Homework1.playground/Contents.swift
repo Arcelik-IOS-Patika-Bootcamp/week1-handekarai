@@ -65,14 +65,18 @@ class groceryItem{
     private var price: Double
     private var type: groceryItemType
     
-    init(name:String, price:Double, type:groceryItemType){
+    init(name:String, price:Double,
+         type:groceryItemType){
         self.name = name
         self.price = price
         self.type = .food(isFrozen: false)           //initial type is not frozen food
     }
     
     func giveInformation() -> String{
-        return "Name: \(name), Price: \(price), Type: \(type)"
+        return """
+        Name: \(name), Price: \(price),
+        Type: \(type)
+        """
     }
     
     func getName() -> String{
@@ -88,10 +92,37 @@ class groceryItem{
     }
 }
 
-var peas = groceryItem(name: "Peas", price: 10.5, type: .food(isFrozen: true))
-var detergent = groceryItem(name: "Detergent", price: 15, type: .cleaner)
-var shampoo = groceryItem(name: "Shampoo", price: 9, type: .personalCare)
+var peas = groceryItem(name: "Peas",                 //example of frozen food
+                       price: 10.5,
+                       type: .food(isFrozen: true))
+
+var detergent = groceryItem(name: "Detergent",       //example of cleaner
+                            price: 15,
+                            type: .cleaner)
+
+var shampoo = groceryItem(name: "Shampoo",           //example of personal care product
+                          price: 9,
+                          type: .personalCare)
 
 print(peas.giveInformation())
 print(detergent.getName())
 print(shampoo.getType())
+
+/**Switch Case**/
+switch peas.getType(){                               //prints explanation according to peas type
+case .food(isFrozen: true):
+    print("It is a frozen food.")
+    break
+case .food(isFrozen: false):
+    print("It is a frozen food.")
+    break
+case .cleaner:
+    print("It is cleaner.")
+    break
+case .personalCare:
+    print("It is personel care product.")
+    break
+default:
+    print("Type is not found.")
+    break
+}
