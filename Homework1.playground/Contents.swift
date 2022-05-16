@@ -50,3 +50,11 @@ for (item,price) in itemsPrices{
 for (year,itemList) in itemsPricesInflation{
     print(year,itemList.keys,itemList.values)        //prints prices according to years
 }
+
+/**Enum**/
+enum groceryItemType{
+    case beverage
+    case food(_ isFrozen: Bool)
+    case personalCare
+    case cleaner
+}
