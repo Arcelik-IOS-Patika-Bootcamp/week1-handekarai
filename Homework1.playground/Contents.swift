@@ -54,7 +54,44 @@ for (year,itemList) in itemsPricesInflation{
 /**Enum**/
 enum groceryItemType{
     case beverage
-    case food(_ isFrozen: Bool)
+    case food(isFrozen: Bool)
     case personalCare
     case cleaner
 }
+
+/**Class**/
+class groceryItem{
+    private var name: String
+    private var price: Double
+    private var type: groceryItemType
+    
+    init(name:String, price:Double, type:groceryItemType){
+        self.name = name
+        self.price = price
+        self.type = .food(isFrozen: false)           //initial type is not frozen food
+    }
+    
+    func giveInformation() -> String{
+        return "Name: \(name), Price: \(price), Type: \(type)"
+    }
+    
+    func getName() -> String{
+        return name
+    }
+    
+    func getPrice() -> Double{
+        return price
+    }
+    
+    func getType() -> groceryItemType{
+        return type
+    }
+}
+
+var peas = groceryItem(name: "Peas", price: 10.5, type: .food(isFrozen: true))
+var detergent = groceryItem(name: "Detergent", price: 15, type: .cleaner)
+var shampoo = groceryItem(name: "Shampoo", price: 9, type: .personalCare)
+
+print(peas.giveInformation())
+print(detergent.getName())
+print(shampoo.getType())
