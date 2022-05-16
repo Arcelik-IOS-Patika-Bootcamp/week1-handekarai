@@ -61,7 +61,7 @@ enum groceryItemType{
 
 /**Class**/
 class groceryItem{
-    private var name: String
+    private var name: String?
     private var price: Double
     private var type: groceryItemType
     
@@ -69,18 +69,15 @@ class groceryItem{
          type:groceryItemType){
         self.name = name
         self.price = price
-        self.type = .food(isFrozen: false)           //initial type is not frozen food
+        self.type = type
     }
     
     func giveInformation() -> String{
-        return """
-        Name: \(name), Price: \(price),
-        Type: \(type)
-        """
+        return "Name: \(name!), Price: \(price)"
     }
     
-    func getName() -> String{
-        return name
+    func getName() -> String?{
+        return name!
     }
     
     func getPrice() -> Double{
@@ -105,16 +102,16 @@ var shampoo = groceryItem(name: "Shampoo",           //example of personal care 
                           type: .personalCare)
 
 print(peas.giveInformation())
-print(detergent.getName())
+print(detergent.getName()!)
 print(shampoo.getType())
 
 /**Switch Case**/
-switch peas.getType(){                               //prints explanation according to peas type
+switch detergent.getType(){                               //prints explanation according to peas type
 case .food(isFrozen: true):
     print("It is a frozen food.")
     break
 case .food(isFrozen: false):
-    print("It is a frozen food.")
+    print("It is not a frozen food.")
     break
 case .cleaner:
     print("It is cleaner.")
@@ -126,3 +123,24 @@ default:
     print("Type is not found.")
     break
 }
+
+/**If - Guard Statements**/
+if case .personalCare = shampoo.getType() {          //checks shampoo has personal care type
+    print("It is personel care product.")
+}
+
+if peas.getName() == "Peas"{                         //checks peas object name is equal Peas
+    print("It is true")
+}else{
+    print("It is false")
+}
+
+func showName(){                                     //if name is null, then returns nothing
+    let object = shampoo
+    
+    guard let name = object.getName() else{
+        return
+    }
+    print(name)
+}
+showName()
