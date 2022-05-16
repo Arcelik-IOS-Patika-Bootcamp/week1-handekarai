@@ -11,6 +11,9 @@ var groceryList : [String] = ["Banana","Coffee",     //string array
 let _ = groceryList.remove(at: 0)                    //remove banana and no need keep it
 groceryList.append(contentsOf: ["Apple","Salt"])     //add two item to list
 groceryList.insert(contentsOf: ["Wine"], at: 0)      //insert at beginnig of list
+groceryList.append("Wine")                           //put duplicate record
+var listWithoutDuplicate = Set(groceryList)          //grocery list without dublicate
+
 
 /**Dictionaries*/
 var itemsPrices: [String:Double] = [
@@ -33,3 +36,4 @@ var itemsPricesInflation: [Int : [String:Double]] =
             "Chicken": 35.99,"Snacks": 23
            ]
 ]
+
