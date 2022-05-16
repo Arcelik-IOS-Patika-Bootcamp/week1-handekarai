@@ -28,12 +28,25 @@ itemsPrices["Coffee"] = 6                            //change price of coffee
 itemsPrices["Milk"] = milkPrice                      //add milk to dictionary
 
 var itemsPricesInflation: [Int : [String:Double]] =
-[
+[                                                    //prices according to years
     2021 : itemsPrices,
     2022 : [
             "Salt": 6,"Wine": 40.5,
             "Apple": 10,"Coffee": 12,
-            "Chicken": 35.99,"Snacks": 23
+            "Chicken": 35.99,"Snacks": 23,
+            "Milk": 20
            ]
 ]
 
+/**For Loops*/
+for item in groceryList{
+    print(item)                                      //prints grocery list items
+}
+
+for (item,price) in itemsPrices{
+    print(item,price)                                //prints items and their prices
+}
+
+for (year,itemList) in itemsPricesInflation{
+    print(year,itemList.keys,itemList.values)        //prints prices according to years
+}
