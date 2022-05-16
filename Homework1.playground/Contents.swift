@@ -106,7 +106,7 @@ print(detergent.getName()!)
 print(shampoo.getType())
 
 /**Switch Case**/
-switch detergent.getType(){                               //prints explanation according to peas type
+switch detergent.getType(){                          //prints explanation according to peas type
 case .food(isFrozen: true):
     print("It is a frozen food.")
     break
@@ -144,3 +144,21 @@ func showName(){                                     //if name is null, then ret
     print(name)
 }
 showName()
+
+/**Struct**/
+struct WineBottle{                                   //struct about bottle of wines
+    var name : String
+    var size : String
+    var price : Double
+}
+
+let cherryWineBottle = WineBottle(name: "Sirince",
+                            size: "Standard",
+                            price: 40.5)
+
+let redWineBottle = WineBottle(name: "Kayra",
+                         size: "Magnum",
+                         price: 80)
+
+print("Cherry Wine Name : \(cherryWineBottle.name)")
+print("Red Wine Size : \(redWineBottle.size)")
